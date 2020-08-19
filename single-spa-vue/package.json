@@ -1,0 +1,65 @@
+{
+  "name": "single-spa-vue",
+  "version": "1.8.2",
+  "description": "a single-spa plugin for vue.js applications",
+  "main": "lib/single-spa-vue.js",
+  "scripts": {
+    "prepublishOnly": "yarn build",
+    "build": "rimraf lib && rollup -c",
+    "test": "jest",
+    "prettier": "prettier --write './**'",
+    "lint": "eslint src"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged && concurrently -n yarn:test yarn:lint"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/single-spa/single-spa-vue.git"
+  },
+  "files": [
+    "lib",
+    "src",
+    "types"
+  ],
+  "types": "types/single-spa-vue.d.ts",
+  "keywords": [
+    "single-spa",
+    "vue",
+    "single",
+    "page",
+    "app",
+    "spa"
+  ],
+  "author": "single-spa core team",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/single-spa/single-spa-vue/issues"
+  },
+  "homepage": "https://github.com/single-spa/single-spa-vue#readme",
+  "devDependencies": {
+    "@babel/core": "^7.8.4",
+    "@babel/preset-env": "^7.8.4",
+    "@rollup/plugin-commonjs": "^11.0.2",
+    "@rollup/plugin-node-resolve": "^7.1.1",
+    "@types/jest": "^25.1.2",
+    "babel-eslint": "^10.0.3",
+    "babel-jest": "^25.1.0",
+    "concurrently": "^5.1.0",
+    "css.escape": "^1.5.1",
+    "eslint": "^6.8.0",
+    "eslint-config-important-stuff": "^1.1.0",
+    "eslint-config-prettier": "^6.10.0",
+    "eslint-plugin-prettier": "^3.1.2",
+    "husky": "^4.2.3",
+    "jest": "^25.1.0",
+    "prettier": "^1.19.1",
+    "pretty-quick": "^2.0.1",
+    "rimraf": "^3.0.2",
+    "rollup": "^1.31.1",
+    "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-terser": "^5.2.0"
+  }
+}

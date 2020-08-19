@@ -1,0 +1,41 @@
+{
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "modules": false,
+        "bugfixes": true
+      }
+    ]
+  ],
+  "env": {
+    "test": {
+      "presets": [
+        [
+          "@babel/preset-env",
+          {
+            "bugfixes": true,
+            "targets": {
+              "browsers": "node >=10"
+            }
+          }
+        ]
+      ],
+      "plugins": ["dynamic-import-node"]
+    },
+    "esm": {
+      "presets": [
+        [
+          "@babel/preset-env",
+          {
+            "modules": false,
+            "bugfixes": true,
+            "targets": {
+              "esmodules": true
+            }
+          }
+        ]
+      ]
+    }
+  }
+}
