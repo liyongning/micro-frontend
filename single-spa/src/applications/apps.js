@@ -429,7 +429,8 @@ function sanitizeArguments(
     registration.loadApp = appNameOrConfig.app;
     registration.activeWhen = appNameOrConfig.activeWhen;
     registration.customProps = appNameOrConfig.customProps;
-  } else {
+  }
+  else {
     // 参数列表
     validateRegisterWithArguments(
       appNameOrConfig,

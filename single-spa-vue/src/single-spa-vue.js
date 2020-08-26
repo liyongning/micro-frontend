@@ -17,7 +17,7 @@ const defaultOpts = {
  *      store,
  *      router,
  *      render: h => h(App)
- *    } 
+ *    }
  * }
  * return 四个生命周期函数组成的对象
  */
@@ -103,7 +103,8 @@ function mount(opts, mountedInstances, props) {
             `If appOptions.el is provided to single-spa-vue, the dom element must exist in the dom. Was provided as ${appOptions.el}`
           );
         }
-      } else {
+      }
+      else {
         // 处理DOM容器是元素的情况
         domEl = appOptions.el;
         if (!domEl.id) {

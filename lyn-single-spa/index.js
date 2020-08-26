@@ -71,14 +71,14 @@ function reroute () {
 
 /**
  * 挂载应用
- * @param {*} app 
+ * @param {*} app
  */
 async function tryToBoostrapAndMount(app) {
   if (shouldBeActive(app)) {
     // 正在初始化
     app.status = BOOTSTRAPPING
     // 初始化
-    await app.bootstrap
+    await app.bootstrap()
     // 初始化完成
     app.status = NOT_MOUNTED
     // 第二次判断是为了防止中途用户切换路由
@@ -95,7 +95,7 @@ async function tryToBoostrapAndMount(app) {
 
 /**
  * 卸载应用
- * @param {*} app 
+ * @param {*} app
  */
 async function toUnmount (app) {
   if (app.status !== 'MOUNTED') return app
@@ -110,7 +110,7 @@ async function toUnmount (app) {
 
 /**
  * 加载子应用
- * @param {*} app 
+ * @param {*} app
  */
 async function toLoad (app) {
   if (app.status !== NOT_LOADED) return app
@@ -137,7 +137,7 @@ function getAppChanges () {
   const appsToLoad = [],
     appsToMount = [],
     appsToUnmount = []
-  
+
   apps.forEach(app => {
     switch (app.status) {
       // 待加载
@@ -149,7 +149,7 @@ function getAppChanges () {
       case NOT_MOUNTED:
         if (shouldBeActive(app)) {
           appsToMount.push(app)
-        } 
+        }
         break
       // 待卸载
       case MOUNTED:
@@ -164,7 +164,7 @@ function getAppChanges () {
 
 /**
  * 应用需要激活吗 ？
- * @param {*} app 
+ * @param {*} app
  * return true or false
  */
 function shouldBeActive (app) {
@@ -184,7 +184,7 @@ window.history.pushState = patchedUpdateState(window.history.pushState)
 window.history.replaceState = patchedUpdateState(window.history.replaceState)
 /**
  * 装饰器，增强 pushState 和 replaceState 方法
- * @param {*} updateState 
+ * @param {*} updateState
  */
 function patchedUpdateState (updateState) {
   return function (...args) {
