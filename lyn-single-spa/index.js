@@ -78,7 +78,7 @@ async function tryToBoostrapAndMount(app) {
     // 正在初始化
     app.status = BOOTSTRAPPING
     // 初始化
-    await app.bootstrap()
+    await app.bootstrap(app.customProps)
     // 初始化完成
     app.status = NOT_MOUNTED
     // 第二次判断是为了防止中途用户切换路由
@@ -86,7 +86,7 @@ async function tryToBoostrapAndMount(app) {
       // 正在挂载
       app.status = MOUNTING
       // 挂载
-      await app.mount()
+      await app.mount(app.customProps)
       // 挂载完成
       app.status = MOUNTED
     }
@@ -102,7 +102,7 @@ async function toUnmount (app) {
   // 更新状态为正在卸载
   app.status = MOUNTING
   // 执行卸载
-  await app.unmount()
+  await app.unmount(app.customProps)
   // 卸载完成
   app.status = NOT_MOUNTED
   return app
