@@ -47,6 +47,20 @@ const apps = [
     activeWhen: location => location.pathname.startsWith('/app2'),
     customProps: {}
   },
+  {
+    // 子应用名称
+    name: 'app3',
+    // 子应用加载函数，是一个promise
+    app: loadApp('http://localhost:3000', 'app3'),
+    // 当路由满足条件时（返回true），激活（挂载）子应用
+    activeWhen: location => location.pathname.startsWith('/app3'),
+    // 传递给子应用的对象，这个很重要，该配置告诉react子应用自己的容器元素是什么，这块儿和vue子应用的集成不一样，官网并没有说这部分，或者我没找到，是通过看single-spa-react源码知道的
+    customProps: {
+      domElement: document.getElementById('microApp'),
+      // 添加 name 属性是为了兼容自己写的lyn-single-spa，原生的不需要，当然加了也不影响
+      name: 'app3'
+    }
+  }
 ]
 
 // 注册子应用
